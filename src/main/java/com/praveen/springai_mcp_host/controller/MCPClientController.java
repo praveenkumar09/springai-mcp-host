@@ -3,10 +3,7 @@ package com.praveen.springai_mcp_host.controller;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.tool.ToolCallbackProvider;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -26,11 +23,12 @@ public class MCPClientController {
 
     @GetMapping("/chat")
     public String chat(
-            @RequestParam("message") String message
+            @RequestParam("message") String message,
+            @RequestHeader(value = "username", required = false) String username
     ){
         return chatClient
                 .prompt()
-                .user(message)
+                .user(message+ " My username is "+username)
                 .call()
                 .content();
     }

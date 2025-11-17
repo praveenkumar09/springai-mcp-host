@@ -1,26 +1,11 @@
 {
   "mcpServers": {
-    "filesystem": {
-      "command": "npx",
+    "spring-ai-mcp": {
+      "command": "/Library/Java/JavaVirtualMachines/jdk-23.jdk/Contents/Home/bin/java",
       "args": [
-        "-y",
-        "@modelcontextprotocol/server-filesystem",
-        "/Users/praveenkumarthangaraj/Documents/MCP"
+        "-jar",
+        "/Users/praveenkumarthangaraj/Documents/Spring-ai/mcp-server-stdio/target/mcp-server-stdio-0.0.1-SNAPSHOT.jar"
       ]
-    },
-    "github": {
-      "command": "docker",
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "-e",
-        "GITHUB_PERSONAL_ACCESS_TOKEN",
-        "ghcr.io/github/github-mcp-server"
-      ],
-      "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}"
-      }
     }
   }
 }
